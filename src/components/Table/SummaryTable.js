@@ -11,16 +11,16 @@ import dayjs from 'dayjs';
 
 export default function SummaryTable({ data, columns }) {
 
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [page, setPage] = useState(0)
+  const [rowsPerPage, setRowsPerPage] = useState(5)
 
   const handleChangePage = (event, newPage) => {
-    setPage(newPage);
+    setPage(newPage)
   };
 
   const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
+    setRowsPerPage(+event.target.value)
+    setPage(0)
   };
 
   const isDate = (date) => {
@@ -28,12 +28,12 @@ export default function SummaryTable({ data, columns }) {
   }
 
   const formatDate = (date) => {
-    return dayjs(date).format('DD/MM/YYYY')
+    return dayjs(date).format('MM/DD/YYYY')
   }
 
   function validateStringToInt(str) {
-    const num = parseInt(str, 10);
-    return !isNaN(num);
+    const num = parseInt(str, 10)
+    return !isNaN(num)
   }
 
   return (
@@ -61,7 +61,7 @@ export default function SummaryTable({ data, columns }) {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
+        rowsPerPageOptions={[5, 10, 50]}
         component="div"
         count={data.length}
         rowsPerPage={rowsPerPage}
@@ -70,5 +70,5 @@ export default function SummaryTable({ data, columns }) {
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </Paper>
-  );
+  )
 }

@@ -19,4 +19,4 @@ const AlertComponent = ({ severity, title, messages }) => {
   );
 }
 
-export default AlertComponent;
+export default AlertComponent

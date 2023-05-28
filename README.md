@@ -3,6 +3,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Node Version
+### JSON Server
+In order to save the data, JSON Server wsa implemented
+Run `npm run db` in aa different terminal before running the ReactJS project
+## Node Version
 v18.15.0
 
 

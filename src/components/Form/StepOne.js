@@ -13,41 +13,51 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import AlertComponent from '../Alert/AlertComponent';
 import { validateForm } from '../../errors/errors';
 import dayjs from 'dayjs';
+import { Typography } from '@mui/material';
 
 export default function StepOne({ selections, addSelection, updateSelection, deleteSelection, nextStep }) {
 
   const [errors, setErrors] = useState(null);
 
   const handleUpdate = (index, field, value) => {
-    updateSelection(index, field, value);
+    updateSelection(index, field, value)
   };
 
   const handleDelete = (index) => {
-    deleteSelection(index);
+    deleteSelection(index)
   };
 
   // Validate form before proceeding to next step
   const handleNext = () => {
     const errors = validateForm(selections);
     if (errors.length > 0) {
-      setErrors(errors);
+      setErrors(errors)
     } else {
-      nextStep();
+      nextStep()
     }
   };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <h2>Step 1</h2>
+      <Grid item>
+        <Typography variant="h1" component="h1" align="center" gutterBottom>
+          Records
+        </Typography>
+      </Grid>
       {errors && <AlertComponent severity="error" messages={errors} />}
       {selections.map((selection, index) => (
         <Grid container spacing={1} key={index} sx={{ mb: 5 }}>
+          <Grid item xs={12} sm={12} md={1}>
+            <Typography variant="h4" align='center' sx={{ pt: 1 }}>
+              {index + 1}.
+            </Typography>
+          </Grid>
           <Grid item xs={6} sm={6} md={3}>
             <LocalizationProvider sx={{ width: '100%' }} dateAdapter={AdapterDayjs}>
               <DatePicker
                 sx={{ width: '100%' }}
-                label="Select Date"
-                value={dayjs(selection.startDate)}
+                label="Start Date"
+                value={selection.startDate ? dayjs(selection.startDate) : null}
                 onChange={(selectedDate) => handleUpdate(index, 'startDate', selectedDate)}
               />
             </LocalizationProvider>
@@ -56,8 +66,8 @@ export default function StepOne({ selections, addSelection, updateSelection, del
             <LocalizationProvider sx={{ width: '100%' }} dateAdapter={AdapterDayjs}>
               <DatePicker
                 sx={{ width: '100%' }}
-                label="Select Date"
-                value={dayjs(selection.endDate)}
+                label="End Date"
+                value={selection.endDate ? dayjs(selection.endDate) : null}
                 onChange={(selectedDate) => handleUpdate(index, 'endDate', selectedDate)}
               />
             </LocalizationProvider>
@@ -69,7 +79,7 @@ export default function StepOne({ selections, addSelection, updateSelection, del
               onChange={(e) => handleUpdate(index, 'valueType', e.target.value)}
             />
           </Grid>
-          <Grid item xs={12} sm={12} md={2}>
+          <Grid item xs={12} sm={12} md={1}>
             <OutlinedInput
               sx={{ width: '100%' }}
               type="text"
@@ -104,5 +114,5 @@ export default function StepOne({ selections, addSelection, updateSelection, del
         </Grid>
       </Grid>
     </Box>
-  );
+  )
 }
