@@ -6,7 +6,7 @@ import Select from '@mui/material/Select';
 
 const SelectComponent = ({ value, options, onChange }) => {
   return (
-    <FormControl sx={{ minWidth: 120 }}>
+    <FormControl sx={{ width: '100%' }}>
       <InputLabel id="select-label">Value type</InputLabel>
       <Select
         labelId="select-label"

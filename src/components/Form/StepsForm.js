@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
+import { Box } from '@mui/material';
 
 export default function StepsForm() {
   const [step, setStep] = useState(1);
-  const [selections, setSelections] = useState([{ startDate: new Date('2022-01-01'), endDate: new Date('2022-05-05'), valueType: 'as', amount: 'as' }]);
+  const [selections, setSelections] = useState([{ startDate: new Date('2022-01-01'), endDate: new Date('2022-05-05'), valueType: 'fixed', amount: '500' }]);
 
   const nextStep = () => {
     setStep(step + 1);
@@ -19,8 +20,6 @@ export default function StepsForm() {
   };
 
   const updateSelection = (index, field, value) => {
-    console.log(`index: ${index}, field: ${field}, value: ${value}`);
-    console.log(selections);
     const updatedSelections = [...selections];
     updatedSelections[index][field] = value;
     setSelections(updatedSelections);
@@ -33,7 +32,7 @@ export default function StepsForm() {
   };
 
   return (
-    <div>
+    <Box sx={{ px: 1 }}>
       {step === 1 && (
         <StepOne
           selections={selections}
@@ -44,6 +43,6 @@ export default function StepsForm() {
         />
       )}
       {step === 2 && <StepTwo summaryData={selections} prevStep={prevStep} />}
-    </div>
+    </Box>
   );
 }
