@@ -42,7 +42,7 @@ export default function StepOne({ selections, addSelection, updateSelection, del
       {errors && <AlertComponent severity="error" messages={errors} />}
       {selections.map((selection, index) => (
         <Grid container spacing={1} key={index} sx={{ mb: 5 }}>
-          <Grid item xs={6} sm={6} md={2}>
+          <Grid item xs={6} sm={6} md={3}>
             <LocalizationProvider sx={{ width: '100%' }} dateAdapter={AdapterDayjs}>
               <DatePicker
                 sx={{ width: '100%' }}
@@ -52,7 +52,7 @@ export default function StepOne({ selections, addSelection, updateSelection, del
               />
             </LocalizationProvider>
           </Grid>
-          <Grid item xs={6} sm={6} md={2}>
+          <Grid item xs={6} sm={6} md={3}>
             <LocalizationProvider sx={{ width: '100%' }} dateAdapter={AdapterDayjs}>
               <DatePicker
                 sx={{ width: '100%' }}
@@ -69,7 +69,7 @@ export default function StepOne({ selections, addSelection, updateSelection, del
               onChange={(e) => handleUpdate(index, 'valueType', e.target.value)}
             />
           </Grid>
-          <Grid item xs={12} sm={12} md={3}>
+          <Grid item xs={12} sm={12} md={2}>
             <OutlinedInput
               sx={{ width: '100%' }}
               type="text"
@@ -91,7 +91,7 @@ export default function StepOne({ selections, addSelection, updateSelection, del
           </Grid>
         </Grid>
       ))}
-      <Grid container spacing={1} sx={{ marginTop: 2 }}>
+      <Grid container spacing={1} sx={{ mt: 2, mb: 4 }}>
         <Grid item xs={12} sm={6} md={6}>
           <Button onClick={addSelection} variant="contained" sx={{ width: '100%', height: '100%' }} startIcon={<AddIcon />}>
             Add Selection
