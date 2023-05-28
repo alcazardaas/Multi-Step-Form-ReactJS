@@ -23,4 +23,4 @@ const SelectComponent = ({ value, options, onChange }) => {
   );
 };
 
-export default SelectComponent;
+export default SelectComponent
